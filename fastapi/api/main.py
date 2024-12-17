@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import auth
+from .routers import auth, workouts, routines
 from .database import Base, engine
 app = FastAPI()
 
@@ -20,3 +20,5 @@ async def root():
     return {"message": "Hallo Wereld"}
 
 app.include_router(auth.router)
+app.include_router(workouts.router)
+app.include_router(routines.router)
