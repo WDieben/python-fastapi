@@ -15,7 +15,7 @@ class User(Base):
     hashed_password = Column(String)
 
 class Workout(Base):
-    _tablename_ ='workouts'
+    __tablename__ = 'workouts'
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     name = Column(String, index=True)
@@ -23,7 +23,7 @@ class Workout(Base):
     routines=relationship('Routine', secondary=workout_routine_association, back_populates='workouts')
 
 class Routine(Base):
-    _tablename_ = 'routines'
+    __tablename__ = 'routines'
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     name = Column(String, index=True)
